@@ -51,6 +51,7 @@ function playRound(playerSelection,computerSelection){
 
 function game(){
     let result = [];
+    let round = 0;
 
     for(let i = 0;i < 5; i++){
         let holder = prompt('Enter one of the following => "Rock" "Paper" "Scissors')
@@ -58,17 +59,16 @@ function game(){
         
         if(playerInput === 'rock'||playerInput === 'paper'||playerInput === 'scissors'){
             result.push(playRound(playerInput,getComputerChoice()));
+            round++; 
             i >= 1
                 ? result.shift()
                 : null;
-            console.log(result);
+            console.log(round,result);
         }else{
             console.log('Error, Choose "Rock","Paper","Scissors"')
-            i--
+            i--;
         }
     }
     
     return result;
 }
-
-console.log()
