@@ -1,6 +1,10 @@
 :root {
     font-family: cursive;
     --font-color: goldenrod;
+    --button-font-color: gold;
+    --button-color: midnightblue;
+    --border-color: lightblue;
+    --background-color: blue;
     color: var(--font-color);
 }
 
@@ -10,19 +14,32 @@
 }
 
 main {
-    background: linear-gradient(blue,lightblue);
+    background: linear-gradient(var(--background-color),var(--border-color));
     height: 100vh;
     width: 100vw;
 }
 
-.buttons {
-    display:flex;
-    gap: 50px;
-    width: 50%;
+.title, .buttons, #results, #reset-button {
+    width: 30rem;
     margin: 0 auto;
 }
 
-.rps {
+.title {
+    font-size: 22px;
+}
+
+.buttons {
+    display:flex;
+    gap: 5rem;
+}
+
+#results, .buttons, #reset-button {
+     margin-top: 5rem;
+}
+
+
+/* buttons */
+.rps, #reset{
     width: 100px;
     height: 100px;
     border: 1px solid lightblue;
@@ -34,9 +51,14 @@ main {
     cursor: pointer;
 }
 
-.rps:hover {
+.rps:hover, #reset:hover {
     opacity: 80%;
-    transform: scaleX(1.05);
+    transform: scaleX(1.05) scaleY(1.05);
     border: 3px solid gold;
     box-shadow: 0 0 5px 5px;
+}
+
+#reset-button {
+    display:flex;
+    justify-content: center;
 }
