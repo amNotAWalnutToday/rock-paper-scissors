@@ -45,41 +45,77 @@ function playRound(playerSelection,computerSelection){
 
     if(player === 'rock' && computer === 'rock'){
         result = 'You Draw!';
+        removeChoice();
+        playerChoiceDisplay.classList.add('fa-hand-rock');
+        computerChoiceDisplay.classList.add('fa-hand-rock');
     }else if(player === 'rock' && computer === 'paper'){
         result = 'You Lose!';
         computerPoints++;
+        removeChoice();
+        playerChoiceDisplay.classList.add('fa-hand-rock');
+        computerChoiceDisplay.classList.add('fa-hand-paper');
     }else if(player === 'rock' && computer === 'scissors'){
         result = 'You Win!';
         playerPoints++;
+        removeChoice();
+        playerChoiceDisplay.classList.add('fa-hand-rock');
+        computerChoiceDisplay.classList.add('fa-hand-scissors');
     }else if(player === 'paper' && computer === 'rock'){
         result = 'You Win!';
         playerPoints++;
+        removeChoice();
+        playerChoiceDisplay.classList.add('fa-hand-paper');
+        computerChoiceDisplay.classList.add('fa-hand-rock');
     }else if(player === 'paper' && computer === 'paper'){
         result = 'You Draw!';
+        removeChoice();
+        playerChoiceDisplay.classList.add('fa-hand-paper');
+        computerChoiceDisplay.classList.add('fa-hand-paper');
     }else if(player === 'paper' && computer === 'scissors'){
         result = 'You Lose!';
         computerPoints++;
+        removeChoice();
+        playerChoiceDisplay.classList.add('fa-hand-paper');
+        computerChoiceDisplay.classList.add('fa-hand-scissors');
     }else if(player === 'scissors' && computer === 'rock'){
         result = 'You Lose!';
         computerPoints++;
+        removeChoice();
+        playerChoiceDisplay.classList.add('fa-hand-scissors');
+        computerChoiceDisplay.classList.add('fa-hand-rock');
     }else if(player === 'scissors' && computer === 'paper'){
         result = 'You Win!';
         playerPoints++;
+        removeChoice();
+        playerChoiceDisplay.classList.add('fa-hand-scissors');
+        computerChoiceDisplay.classList.add('fa-hand-paper');
     }else if(player === 'scissors' && computer === 'scissors'){
         result = 'You Draw!';
+        removeChoice();
+        playerChoiceDisplay.classList.add('fa-hand-scissors');
+        computerChoiceDisplay.classList.add('fa-hand-scissors');
     }else {
         return "ERROR, didn't select an appropiate value";
     }
 
     resultDisplay.textContent = result;
-    playerChoiceDisplay.textContent = player;
-    computerChoiceDisplay.textContent = computer;
     roundCount.textContent = round
     playerPointHolder.textContent = playerPoints;
     computerPointHolder.textContent = computerPoints;
 
    return result;
-} 
+}
+
+function removeChoice() {
+    playerChoiceDisplay.classList.remove('fa-hand-rock')
+    playerChoiceDisplay.classList.remove('fa-hand-scissors')
+    playerChoiceDisplay.classList.remove('fa-hand-paper')
+    playerChoiceDisplay.textContent = '';
+    computerChoiceDisplay.classList.remove('fa-hand-rock')
+    computerChoiceDisplay.classList.remove('fa-hand-scissors')
+    computerChoiceDisplay.classList.remove('fa-hand-paper')
+    computerChoiceDisplay.textContent = '';
+}
 
 function resetGame() {
     playerPoints = 0;
@@ -89,7 +125,9 @@ function resetGame() {
     round = 0;
     roundCount.textContent = round;
     winner.textContent = '';
+    removeChoice();
     resultDisplay.textContent = '____';
-    playerChoiceDisplay.textContent = '____';
-    computerChoiceDisplay.textContent = '____';
+    playerChoiceDisplay.textContent = '____!';
+    computerChoiceDisplay.textContent = '____!';
+    
 }

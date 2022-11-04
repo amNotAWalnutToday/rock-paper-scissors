@@ -37,6 +37,30 @@ main {
      margin-top: 5rem;
 }
 
+/* result section */
+.choices div{
+    display: flex;
+    flex-direction: column;
+    background: var(--button-color);
+    width: 30%;
+    gap: 12.5px;
+    height: 5rem;
+    border: 1px solid white;
+}
+
+.choices {
+    display: flex;
+    gap: 5rem;
+    text-align: center;
+    background: var(--button-color);
+    opacity: 80%;
+    border: 1px solid lightblue;
+    box-shadow: 0px 0px 5px 5px;
+}
+
+.choices h3 span {
+    font-size: 30px;
+}
 
 /* buttons */
 .rps, #reset{
