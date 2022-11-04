@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="rps.js" defer></script>
-    <script type="text/javascript"></script>
 </head>
 <body>
-    <button class="rps" type="button" value="rock">Rock</button>
-    <button class="rps" type="button" value="paper">Paper</button>
-    <button class="rps" type="button" value="scissors">Scissors</button>
-    <div id="results">
-        <h3>you chose <span id="your-choice">____</span> and the computer chose <span id="computer-choice">____</span>!</h3>
-        <h1>Results: <span id="result">____</span></h1>
-        <h1>Player: <span id="player-points">0</span> Computer: <span id="computer-points">0</span></h1>
-        <h1>Round: <span id="round-count">0</span></h1>
-        <h1><span id="winner"></span></h1>
-    </div>
+    <main>
+        <div class="buttons">
+            <button class="rps" type="button" value="rock">R<br> <i class="fa fa-hand-rock"></i></button>
+            <button class="rps" type="button" value="paper">P<br> <i class="fa fa-hand-paper"></i></button>
+            <button class="rps" type="button" value="scissors">S<br> <i class="fa fa-hand-scissors"></i></button>
+        </div>
+        <div id="results">
+            <h3>you chose <span id="your-choice">____</span> and the computer chose <span id="computer-choice">____</span>!</h3>
+            <h1>Results: <span id="result">____</span></h1>
+            <h1>Player: <span id="player-points">0</span> Computer: <span id="computer-points">0</span></h1>
+            <h1>Round: <span id="round-count">0</span></h1>
+            <h1><span id="winner"></span></h1>
+        </div>
     <button id="reset" type="button">Reset Game</button>
+    </main>
 </body>
 </html>

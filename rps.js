@@ -14,7 +14,7 @@ playerChoice.forEach(decision => decision.addEventListener('click', playerSelect
 const resetButton = document.querySelector('#reset');
 resetButton.addEventListener('click', resetGame);
 
-function getComputerChoice( ){
+function getComputerChoice(){
     const choice = Math.random()
     let computerChoice = '';
 
