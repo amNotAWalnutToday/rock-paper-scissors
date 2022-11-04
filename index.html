@@ -5,10 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="rps.js"></script>
-    <script type="text/javascript">game()</script>
+    <script src="rps.js" defer></script>
+    <script type="text/javascript"></script>
 </head>
 <body>
-    <button type="button" onclick="game()">Click Here</button>
+    <button class="rps" type="button" value="rock">Rock</button>
+    <button class="rps" type="button" value="paper">Paper</button>
+    <button class="rps" type="button" value="scissors">Scissors</button>
+    <div id="results">
+        <h3>you chose <span id="your-choice"></span> and the computer chose <span id="computer-choice"></span></h3>
+        <h1>Results: <span id="result">NaN</span></h1>
+        <h1>Round: <span id="round-count">0</span></h1>
+    </div>
 </body>
 </html>

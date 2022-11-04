@@ -1,3 +1,8 @@
+let round = 0;
+
+const playerChoice = document.querySelectorAll('.rps')
+playerChoice.forEach(decision => decision.addEventListener('click', playerSelection));
+
 function getComputerChoice( ){
     const choice = Math.random()
     let computerChoice = '';
@@ -13,62 +18,60 @@ function getComputerChoice( ){
     return computerChoice;
 }
 
+function playerSelection(e){
+    let player = e.target.value;
+    playRound(player,getComputerChoice());
+}
+
 function playRound(playerSelection,computerSelection){
     let result = '';
+
     const computer = computerSelection.toLowerCase();
     const player = playerSelection.toLowerCase();
-    switch(player,computer){
-        case 'rock','rock':
-            result = 'You Draw!'
-            break;
-        case 'rock','paper':
-            result = 'You Lose!'
-            break;
-        case 'rock','scissors':
-            result = 'You Win!'
-            break;
-        case 'paper','rock':
-            result = 'You Win!'
-            break;
-        case 'paper','paper':
-            result = 'You Draw!'
-            break;
-        case 'paper','scissors':
-            result = 'You Lose!'
-            break;
-        case 'scissors','rock':
-            result = 'You Lose!'
-            break;
-        case 'scissors','paper':
-            result = 'You Win!'
-            break;
-        case 'scissors','scissors':
-            result = 'You Draw!'
-            break;
+    round++;
+
+    if(player === 'rock' && computer === 'rock'){
+        result = 'You Draw!';
+    }else if(player === 'rock' && computer === 'paper'){
+        result = 'You Lose!';
+    }else if(player === 'rock' && computer === 'scissors'){
+        result = 'You Win!';
+    }else if(player === 'paper' && computer === 'rock'){
+        result = 'You Win!';
+    }else if(player === 'paper' && computer === 'paper'){
+        result = 'You Draw!';
+    }else if(player === 'paper' && computer === 'scissors'){
+        result = 'You Lose!';
+    }else if(player === 'scissors' && computer === 'rock'){
+        result = 'You Lose!';
+    }else if(player === 'scissors' && computer === 'paper'){
+        result = 'You Win!';
+    }else if(player === 'scissors' && computer === 'scissors'){
+        result = 'You Draw!';
     }
+
+    const resultDisplay = document.querySelector('#result');
+    resultDisplay.textContent = result;
+    const playerChoiceDisplay = document.querySelector('#your-choice');
+    playerChoiceDisplay.textContent = player;
+    const computerChoiceDisplay = document.querySelector('#computer-choice');
+    computerChoiceDisplay.textContent = computer;
+    const roundCount = document.querySelector('#round-count')
+    roundCount.textContent = round
    return result;
 } 
 
-function game(){
+function game(playerInput){
     let result = [];
-    let round = 0;
-
-    for(let i = 0;i < 5; i++){
-        let holder = prompt('Enter one of the following => "Rock" "Paper" "Scissors')
-        let playerInput = holder.toLowerCase();
         
-        if(playerInput === 'rock'||playerInput === 'paper'||playerInput === 'scissors'){
-            result.push(playRound(playerInput,getComputerChoice()));
-            round++; 
-            i >= 1
-                ? result.shift()
-                : null;
-            console.log(round,result);
-        }else{
-            console.log('Error, Choose "Rock","Paper","Scissors"')
-            i--;
-        }
+    if(playerInput === 'rock'||playerInput === 'paper'||playerInput === 'scissors'){
+        result.push(playRound(playerInput,getComputerChoice()));
+        round++; 
+        console.log(round,result);
+    }else{
+        console.log('Error, Choose "Rock","Paper","Scissors"')
     }
+
     
     return result;
 }
