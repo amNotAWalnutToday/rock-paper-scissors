@@ -2,6 +2,7 @@ let round = 0;
 let playerPoints = 0;
 let computerPoints = 0;
 
+const winScreen = document.querySelector('#win-lose')
 const computerPointHolder = document.querySelector('#computer-points')
 const playerPointHolder = document.querySelector('#player-points')
 const roundCount = document.querySelector('#round-count')
@@ -36,6 +37,16 @@ function playerSelection(e){
 
 function playRound(playerSelection,computerSelection){
     let result = '';
+
+    if(playerPoints >= 5){
+        winScreen.classList.remove('hide');
+        winScreen.classList.add('win');
+        winScreen.textContent = "Congratulations, You're a Winner!"
+    }else if(computerPoints >= 5){
+        winScreen.classList.remove('hide');
+        winScreen.classList.add('lose');
+        winScreen.textContent = 'GAME OVER!'
+    }
 
     if(playerPoints >= 5||computerPoints >= 5) return playerPoints === 5 ? winner.textContent = 'Player Wins' : winner.textContent = 'Computer Wins';
 
@@ -129,5 +140,7 @@ function resetGame() {
     resultDisplay.textContent = '____';
     playerChoiceDisplay.textContent = '____!';
     computerChoiceDisplay.textContent = '____!';
-    
+    const win = document.querySelector('#win-lose')
+    win.setAttribute('class','hide')
 }
+

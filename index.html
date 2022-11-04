@@ -11,39 +11,50 @@
 </head>
 <body>
     <main>
+        <br>
         <div class="title">
             <h1>Rock, Paper, Scissors</h1>
             <h1>Shoot!</h1>
         </div>
-        <div class="buttons">
-            <button class="rps" type="button" value="rock">R<br> <i class="fa fa-hand-rock"></i></button>
-            <button class="rps" type="button" value="paper">P<br> <i class="fa fa-hand-paper"></i></button>
-            <button class="rps" type="button" value="scissors">S<br> <i class="fa fa-hand-scissors"></i></button>
-        </div>
         <div id="results">
+            <div class="choices">
+                <div>
+                    <h3>Player </h3>
+                    <h3><span id="player-points">0</span></h3>
+                </div>
+                <div>
+                    <h2>Round</h2>
+                    <h2><span id="round-count">0</span></h2>
+                </div>
+                <div>
+                    <h3>Computer</h3>
+                    <h3> <span id="computer-points">0</span></h3>
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="rps" type="button" value="rock">R<br> <i class="fa fa-hand-rock"></i></button>
+                <button class="rps" type="button" value="paper">P<br> <i class="fa fa-hand-paper"></i></button>
+                <button class="rps" type="button" value="scissors">S<br> <i class="fa fa-hand-scissors"></i></button>
+            </div>    
             <div class="choices">
                 <div>
                     <h3>Player</h3>
                     <h3><span id="your-choice" class="fa">____!</span></h3>
                 </div>
                 <div>
-                    <h2>Round</h1>
-                    <h2><span id="round-count">0</span></h1>
+                    <h2>Winner <span id="result">____</span></h2>
+                    <h2><span id="winner"></span></h2>
                 </div>
-                <div>
+                 <div>
                     <h3>Computer</h3>
                     <h3><span id="computer-choice" class="fa">____!</span></h3>
                 </div>
             </div>
-             
-            <h1>Results: <span id="result">____</span></h1>
-            <h1>Player: <span id="player-points">0</span> Computer: <span id="computer-points">0</span></h1>
-            
-            <h1><span id="winner"></span></h1>
         </div>
         <div id="reset-button">
             <button id="reset" type="button">Reset Game</button>
         </div>
+        <div id="win-lose" class="hide">You are a Winner!</div>
     </main>
 </body>
 </html>
