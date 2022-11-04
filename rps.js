@@ -2,8 +2,17 @@ let round = 0;
 let playerPoints = 0;
 let computerPoints = 0;
 
-const playerChoice = document.querySelectorAll('.rps')
+const computerPointHolder = document.querySelector('#computer-points')
+const playerPointHolder = document.querySelector('#player-points')
+const roundCount = document.querySelector('#round-count')
+const computerChoiceDisplay = document.querySelector('#computer-choice');
+const playerChoiceDisplay = document.querySelector('#your-choice');
+const resultDisplay = document.querySelector('#result');
+const winner = document.querySelector('#winner');
+const playerChoice = document.querySelectorAll('.rps');
 playerChoice.forEach(decision => decision.addEventListener('click', playerSelection));
+const resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', resetGame);
 
 function getComputerChoice( ){
     const choice = Math.random()
@@ -27,6 +36,8 @@ function playerSelection(e){
 
 function playRound(playerSelection,computerSelection){
     let result = '';
+
+    if(playerPoints >= 5||computerPoints >= 5) return playerPoints === 5 ? winner.textContent = 'Player Wins' : winner.textContent = 'Computer Wins';
 
     const computer = computerSelection.toLowerCase();
     const player = playerSelection.toLowerCase();
@@ -56,34 +67,29 @@ function playRound(playerSelection,computerSelection){
         playerPoints++;
     }else if(player === 'scissors' && computer === 'scissors'){
         result = 'You Draw!';
+    }else {
+        return "ERROR, didn't select an appropiate value";
     }
 
-    const resultDisplay = document.querySelector('#result');
     resultDisplay.textContent = result;
-    const playerChoiceDisplay = document.querySelector('#your-choice');
     playerChoiceDisplay.textContent = player;
-    const computerChoiceDisplay = document.querySelector('#computer-choice');
     computerChoiceDisplay.textContent = computer;
-    const roundCount = document.querySelector('#round-count')
     roundCount.textContent = round
-    const playerPointHolder = document.querySelector('#player-points')
     playerPointHolder.textContent = playerPoints;
-    const computerPointHolder = document.querySelector('#computer-points')
     computerPointHolder.textContent = computerPoints;
+
    return result;
 } 
 
-function game(playerInput){
-    let result = [];
-        
-    if(playerInput === 'rock'||playerInput === 'paper'||playerInput === 'scissors'){
-        result.push(playRound(playerInput,getComputerChoice()));
-        round++; 
-        console.log(round,result);
-    }else{
-        console.log('Error, Choose "Rock","Paper","Scissors"')
-    }
-
-    
-    return result;
+function resetGame() {
+    playerPoints = 0;
+    playerPointHolder.textContent = playerPoints;
+    computerPoints = 0;
+    computerPointHolder.textContent = computerPoints;
+    round = 0;
+    roundCount.textContent = round;
+    winner.textContent = '';
+    resultDisplay.textContent = '____';
+    playerChoiceDisplay.textContent = '____';
+    computerChoiceDisplay.textContent = '____';
 }
