@@ -1,4 +1,6 @@
 let round = 0;
+let playerPoints = 0;
+let computerPoints = 0;
 
 const playerChoice = document.querySelectorAll('.rps')
 playerChoice.forEach(decision => decision.addEventListener('click', playerSelection));
@@ -34,18 +36,24 @@ function playRound(playerSelection,computerSelection){
         result = 'You Draw!';
     }else if(player === 'rock' && computer === 'paper'){
         result = 'You Lose!';
+        computerPoints++;
     }else if(player === 'rock' && computer === 'scissors'){
         result = 'You Win!';
+        playerPoints++;
     }else if(player === 'paper' && computer === 'rock'){
         result = 'You Win!';
+        playerPoints++;
     }else if(player === 'paper' && computer === 'paper'){
         result = 'You Draw!';
     }else if(player === 'paper' && computer === 'scissors'){
         result = 'You Lose!';
+        computerPoints++;
     }else if(player === 'scissors' && computer === 'rock'){
         result = 'You Lose!';
+        computerPoints++;
     }else if(player === 'scissors' && computer === 'paper'){
         result = 'You Win!';
+        playerPoints++;
     }else if(player === 'scissors' && computer === 'scissors'){
         result = 'You Draw!';
     }
@@ -58,6 +66,10 @@ function playRound(playerSelection,computerSelection){
     computerChoiceDisplay.textContent = computer;
     const roundCount = document.querySelector('#round-count')
     roundCount.textContent = round
+    const playerPointHolder = document.querySelector('#player-points')
+    playerPointHolder.textContent = playerPoints;
+    const computerPointHolder = document.querySelector('#computer-points')
+    computerPointHolder.textContent = computerPoints;
    return result;
 } 
 
