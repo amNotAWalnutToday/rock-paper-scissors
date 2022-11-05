@@ -1,6 +1,6 @@
 let round = 0;
 let playerPoints = 0;
-let computerPoints = 0;
+let computerPoints = 4;
 
 const winScreen = document.querySelector('#win-lose')
 const computerPointHolder = document.querySelector('#computer-points')
@@ -9,11 +9,14 @@ const roundCount = document.querySelector('#round-count')
 const computerChoiceDisplay = document.querySelector('#computer-choice');
 const playerChoiceDisplay = document.querySelector('#your-choice');
 const resultDisplay = document.querySelector('#result');
-const winner = document.querySelector('#winner');
 const playerChoice = document.querySelectorAll('.rps');
 playerChoice.forEach(decision => decision.addEventListener('click', playerSelection));
 const resetButton = document.querySelector('#reset');
 resetButton.addEventListener('click', resetGame);
+winScreen.addEventListener('animationend', e => {
+    winScreen.style.cssText = 'top: 40vh'
+    winScreen.classList.add('scale')
+})
 
 function getComputerChoice(){
     const choice = Math.random()
@@ -135,12 +138,12 @@ function resetGame() {
     computerPointHolder.textContent = computerPoints;
     round = 0;
     roundCount.textContent = round;
-    winner.textContent = '';
     removeChoice();
     resultDisplay.textContent = '____';
     playerChoiceDisplay.textContent = '____!';
     computerChoiceDisplay.textContent = '____!';
     const win = document.querySelector('#win-lose')
     win.setAttribute('class','hide')
+    win.style.cssText = 'bottom: 20vh';
 }
 

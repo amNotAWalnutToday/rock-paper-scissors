@@ -70,6 +70,10 @@ main {
     font-size: 30px;
 }
 
+#result {
+    font-size: 28px;
+}
+
 /* buttons */
 .rps, #reset {
     width: 100px;
@@ -95,28 +99,46 @@ main {
     justify-content: center;
 }
 
+/* win/lose style & animation style*/
+
+#win-lose {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .win, .lose {
     width: 50%;
     font-size: 50px;
     text-align: center;
-    color: var(--button-color);
+    background: var(--button-color);
+    opacity: 80%;
 }
 
 .win {
-    background: radial-gradient(green,lime,var(--button-color));
-    animation: winLose 10s 1 linear;
-    opacity: 80%;
+    color: lime;
+    box-shadow: 0px 0px 10px 10px lime;
+    animation: winLose 3s 1 linear;
+    
     position: absolute;
     bottom: 20vh;
     left:25vw;
+    height: 150px;
 }
 
 .lose {
     position: absolute;
     top: 0px;
     left: 25vw;
-    background: radial-gradient(red,coral,var(--button-color));
-    animation: loseWin 5s 1 linear;
+    color: crimson;
+    box-shadow: 0px 0px 10px 10px orangered;
+    animation: loseWin 0.5s 1 linear;
+    height: 150px;
+    letter-spacing: 2px;
+}
+
+.scale {
+    transform: scale(1.5,1.5);
 }
 
 .hide {
@@ -130,25 +152,26 @@ main {
     }
     
     50% {
-        transform: translate(0,-550px) scale(1.5,1.5);
         color: gold;
         opacity: 100%;
-        box-shadow: 0px 0px 25px 25px;
+        box-shadow: 0px 0px 10px 10px lime;
+    }
+
+    100% {
+        transform: translate(0,-220px) scale(1.5,1.5);
+
     }
 }
 
 @keyframes loseWin {
-    5% {
-        transform: translate(0,300px) scale(1.5,1.5);
-    }
-
     25% {
         color: maroon;   
-        box-shadow: 0px 0px 5px 5px coral;
     }
     
     50% {
         color: orangered;
-        box-shadow: 0px 0px 25px 25px;
+    }  
+    100% {
+        transform: translate(0,325px) scale(1.5,1.5);
     }
 }
