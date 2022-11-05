@@ -1,6 +1,6 @@
 let round = 0;
 let playerPoints = 0;
-let computerPoints = 4;
+let computerPoints = 0;
 
 const winScreen = document.querySelector('#win-lose')
 const computerPointHolder = document.querySelector('#computer-points')
@@ -16,6 +16,7 @@ resetButton.addEventListener('click', resetGame);
 winScreen.addEventListener('animationend', e => {
     winScreen.style.cssText = 'top: 40vh'
     winScreen.classList.add('scale')
+    highlightReset();
 })
 
 function getComputerChoice(){
@@ -41,15 +42,7 @@ function playerSelection(e){
 function playRound(playerSelection,computerSelection){
     let result = '';
 
-    if(playerPoints >= 5){
-        winScreen.classList.remove('hide');
-        winScreen.classList.add('win');
-        winScreen.textContent = "Congratulations, You're a Winner!"
-    }else if(computerPoints >= 5){
-        winScreen.classList.remove('hide');
-        winScreen.classList.add('lose');
-        winScreen.textContent = 'GAME OVER!'
-    }
+
 
     if(playerPoints >= 5||computerPoints >= 5) return playerPoints === 5 ? winner.textContent = 'Player Wins' : winner.textContent = 'Computer Wins';
 
@@ -112,6 +105,16 @@ function playRound(playerSelection,computerSelection){
         return "ERROR, didn't select an appropiate value";
     }
 
+    if(playerPoints >= 5){
+        winScreen.classList.remove('hide');
+        winScreen.classList.add('win');
+        winScreen.textContent = "Congratulations, You're a Winner!";
+    }else if(computerPoints >= 5){
+        winScreen.classList.remove('hide');
+        winScreen.classList.add('lose');
+        winScreen.textContent = 'GAME OVER!';
+    }
+    
     resultDisplay.textContent = result;
     roundCount.textContent = round
     playerPointHolder.textContent = playerPoints;
@@ -131,6 +134,10 @@ function removeChoice() {
     computerChoiceDisplay.textContent = '';
 }
 
+function highlightReset(){
+    resetButton.style.cssText = "animation: highlightReset 1s infinite linear; opacity: 90%;"
+}
+
 function resetGame() {
     playerPoints = 0;
     playerPointHolder.textContent = playerPoints;
@@ -142,8 +149,8 @@ function resetGame() {
     resultDisplay.textContent = '____';
     playerChoiceDisplay.textContent = '____!';
     computerChoiceDisplay.textContent = '____!';
-    const win = document.querySelector('#win-lose')
+    const win = document.querySelector('#win-lose');
     win.setAttribute('class','hide')
     win.style.cssText = 'bottom: 20vh';
+    resetButton.style.cssText = 'animation: none';
 }
-
